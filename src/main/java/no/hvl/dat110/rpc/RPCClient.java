@@ -1,5 +1,8 @@
 package no.hvl.dat110.rpc;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import no.hvl.dat110.TODO;
 import no.hvl.dat110.messaging.*;
 
@@ -16,13 +19,15 @@ public class RPCClient {
 		msgclient = new MessagingClient(server,port);
 	}
 	
-	public void connect() {
+	public void connect() throws UnknownHostException, IOException {
 		
 		// TODO - START
 		// connect using the RPC client
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		connection = msgclient.connect();
+		
+//		if (true)
+//			throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - END
 	}
@@ -32,8 +37,10 @@ public class RPCClient {
 		// TODO - START
 		// disconnect by closing the underlying messaging connection
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		connection.close();
+		
+//		if (true)
+//			throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - END
 	}

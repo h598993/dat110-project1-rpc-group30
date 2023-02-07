@@ -54,7 +54,7 @@ public class MessageConnection {
 	public Message receive() {
 
 		Message message = null;
-		byte[] data = null;
+		byte[] data = new byte[128];
 
 		// TODO - START
 		// read a segment from the input stream and decapsulate data into a Message
