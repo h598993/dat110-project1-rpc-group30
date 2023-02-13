@@ -39,9 +39,14 @@ public class RPCUtils {
 
 		// Decapsulate the rpcid and payload in a byte array according to the RPC
 		// message syntax
-		payload = new byte[rpcmsg.length - 1];
-		for (int i = 0; i < rpcmsg.length - 1; i++) {
-			payload[i] = rpcmsg[i + 1];
+//		payload = new byte[rpcmsg.length - 1];
+//		for (int i = 0; i < rpcmsg.length - 1; i++) {
+//			payload[i] = rpcmsg[i + 1];
+//		}
+		
+		payload = new byte[rpcmsg.length];
+		for (int i = 0; i < rpcmsg.length; i++) {
+			payload[i] = rpcmsg[i];
 		}
 
 //		if (true)
@@ -74,6 +79,7 @@ public class RPCUtils {
 
 		String decoded = null;
 
+		
 		// TODO - START
 		decoded = new String(data);
 
@@ -87,12 +93,14 @@ public class RPCUtils {
 
 	public static byte[] marshallVoid() {
 
-		byte[] encoded = null;
+		byte[] encoded = new byte[1];
 
 		// TODO - START
 
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		encoded[0] = 0;
+		
+//		if (true)
+//			throw new UnsupportedOperationException(TODO.method());
 
 		// TODO - END
 
@@ -104,8 +112,8 @@ public class RPCUtils {
 
 		// TODO
 
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+//		if (true)
+//			throw new UnsupportedOperationException(TODO.method());
 
 	}
 

@@ -53,10 +53,14 @@ public class RPCServer {
 //				throw new UnsupportedOperationException(TODO.method());
 		   
 		   requestmsg = connection.receive();
-		   rpcid = RPCUtils.decapsulate(requestmsg.getData())[0];
-		   RPCRemoteImpl metode =services.get(rpcid);
-		   metode.invoke(null);//param som skal invokes
+		   rpcid = requestmsg.getData()[0];
+		   byte[] payload = RPCUtils.decapsulate(requestmsg.getData());
 		   
+		   RPCRemoteImpl metode =services.get(rpcid);
+		  byte[]  returSvar = metode.invoke(payload); //param som skal invokes
+		  
+		  
+		   connection.send(new Message(returSvar));
 		   
 		   
 		   // TODO - END
